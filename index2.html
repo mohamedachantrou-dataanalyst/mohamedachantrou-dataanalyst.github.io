@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #161b22;
+            --accent-color: #00d4ff;
+            --text-main: #e6edf3;
+            --text-dim: #8b949e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Effet de background Data */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(11, 15, 25, 0.9), rgba(11, 15, 25, 0.9)),
+                        url('https://images.unsplash.com/photo-1551288049-bbbda536ad8a?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; color: var(--accent-color); }
+        .subtitle { font-size: 1.5rem; color: var(--text-dim); margin-bottom: 2rem; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
+
+        section { margin-bottom: 100px; }
+        h2 { border-left: 4px solid var(--accent-color); padding-left: 15px; margin-bottom: 40px; }
+
+        /* Grille de Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #30363d;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .skill-card i { font-size: 2rem; color: var(--accent-color); margin-bottom: 10px; }
+
+        /* Cartes Projets */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            display: flex;
+            border: 1px solid #30363d;
+        }
+
+        .project-img { width: 40%; background: #21262d; display: flex; align-items: center; justify-content: center; }
+        .project-img img { width: 100%; height: auto; opacity: 0.8; }
+        .project-info { padding: 30px; width: 60%; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent-color);
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        nav { position: fixed; top: 0; width: 100%; background: rgba(13, 17, 23, 0.95); padding: 15px 0; z-index: 100; text-align: center; }
+        nav a { color: var(--text-main); margin: 0 20px; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: var(--accent-color); }
+
+        @media (max-width: 768px) {
+            .project-card { flex-direction: column; }
+            .project-img, .project-info { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#about">À Propos</a>
+    <a href="#skills">Compétences</a>
+    <a href="#projects">Projets</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<header>
+    <h1>Prénom Nom</h1>
+    <p class="subtitle">Data Analyst | Transformer les données en décisions</p>
+    <a href="#projects" class="btn">Voir mes travaux</a>
+</header>
+
+<div class="container">
+    <section id="about">
+        <h2>À Propos</h2>
+        <p>Passionné par l'extraction de valeur à partir de données complexes. Spécialisé en Business Intelligence et automatisation de pipelines de données.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Compétences Techniques</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fa-solid fa-database"></i><h3>SQL</h3><p>Analyse complexe & ETL</p></div>
+            <div class="skill-card"><i class="fa-brands fa-python"></i><h3>Python</h3><p>Pandas, Numpy, Seaborn</p></div>
+            <div class="skill-card"><i class="fa-solid fa-chart-line"></i><h3>Power BI</h3><p>DAX & Modélisation</p></div>
+            <div class="skill-card"><i class="fa-solid fa-square-root-variable"></i><h3>Statistiques</h3><p>Tests A/B & Probabilités</p></div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projets Phares</h2>
+        
+        <div class="project-card">
+            <div class="project-img">
+                <i class="fa-solid fa-chart-pie" style="font-size: 5rem; color: #30363d;"></i>
+            </div>
+            <div class="project-info">
+                <h3>Analyse de la Stratégie Achat 2025</h3>
+                <p>Optimisation des coûts et évaluation de la fiabilité fournisseurs. Utilisation de SQL pour le pipeline et Power BI pour la visualisation.</p>
+                <a href="#" class="btn">Détails GitHub</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img">
+                <i class="fa-solid fa-microchip" style="font-size: 5rem; color: #30363d;"></i>
+            </div>
+            <div class="project-info">
+                <h3>Nettoyage Automatisé Python</h3>
+                <p>Script de nettoyage de données E-commerce réduisant le temps de préparation de 70%.</p>
+                <a href="#" class="btn">Voir le Code</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="text-align: center;">
+        <h2>Me Contacter</h2>
+        <p>Prêt à collaborer sur vos défis Data ?</p>
+        <div style="font-size: 1.5rem;">
+            <a href="#" style="color: var(--accent-color); margin: 0 15px;"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" style="color: var(--accent-color); margin: 0 15px;"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:votre@email.com" style="color: var(--accent-color); margin: 0 15px;"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
