@@ -87,6 +87,30 @@
             margin: 20px auto 0 auto; /* CHANGÉ : auto partout pour centrer le bloc */
         }
 
+        .hero-quote {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 20px;
+            border-top: 1px solid #30363d; /* Une ligne fine pour séparer du header */
+            border-bottom: 1px solid #30363d; /* Une ligne en bas pour fermer la citation */
+        }
+        
+        .hero-quote p {
+            font-size: 1.4rem; /* Un peu plus grand pour la visibilité */
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-quote span {
+            font-size: 0.9rem;
+            color: var(--accent-color); /* Le nom de l'auteur en bleu */
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         /* --- À PROPOS (CORRIGÉ & CENTRÉ) --- */
         .about-grid { 
             display: grid; 
@@ -170,6 +194,13 @@
         <p class="tagline">Faire des données un moteur de décision et de performance stratégique.</p>
     </div>
 </header>
+
+<div class="container">
+    <div class="hero-quote">
+        <p>“Without data, you're just another person with an opinion.”</p>
+        <span>— W. Edwards Deming</span>
+    </div>
+</div>
 
 <div class="container">
     
