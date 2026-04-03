@@ -43,13 +43,49 @@
         nav .links a:hover { color: var(--accent-color); }
 
         /* --- HERO --- */
-        header { height: 80vh; display: flex; align-items: center; justify-content: space-between; }
-        .hero-content { flex: 1; text-align: right; padding-right: 60px; }
+        header { 
+            height: 80vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+        }
+        
+        .hero-content { 
+            flex: 1; 
+            text-align: center; /* CHANGÉ : de right à center */
+            padding-right: 0;    /* CHANGÉ : on enlève le décalage pour que ce soit bien au milieu */
+        }
+        
         .hero-image { flex: 1; }
-        .hero-image img { width: 100%; border-radius: 15px; border: 1px solid #30363d; }
-        h1 { font-size: 3.5rem; margin: 0; color: var(--accent-color); }
-        .role { font-size: 1.8rem; font-weight: 300; margin: 10px 0; }
-        .tagline { color: var(--text-dim); font-size: 1.1rem; max-width: 500px; margin-left: auto; }
+        
+        .hero-image img { 
+
+        width: 100%; 
+        border-radius: 15px; 
+        /* CHANGÉ : Ajout du bord bleu et de l'ombre lumineuse (glow) */
+        border: 2px solid var(--accent-color); 
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); /* Effet glow subtil */
+}
+        }
+        
+        h1 { 
+            font-size: 2.5rem; /* CHANGÉ : taille réduite */
+            margin: 0; 
+            color: var(--accent-color); 
+        }
+        
+        .role { 
+            font-size: 1.8rem; 
+            font-weight: 300; 
+            margin: 10px 0; 
+        }
+        
+        .tagline { 
+            color: var(--text-dim); 
+            font-size: 1.1rem; 
+            max-width: 500px; 
+            margin: 20px auto 0 auto; /* CHANGÉ : auto partout pour centrer le bloc */
+        }
 
         /* --- À PROPOS (CORRIGÉ & CENTRÉ) --- */
         .about-grid { 
@@ -74,7 +110,16 @@
             align-items: center; 
             justify-content: center; 
         }
-        .step-text { background: var(--card-bg); padding: 12px 20px; flex: 1; font-size: 0.9rem; display: flex; align-items: center; }
+        .step-text { 
+            background: var(--card-bg); 
+            padding: 12px 20px; 
+            flex: 1; 
+            font-size: 0.9rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; /* <-- AJOUTE CECI POUR CENTRER LE TITRE */
+            text-align: center;      /* <-- AJOUTE CECI POUR LE TEXTE SUR PLUSIEURS LIGNES */
+        }
         .connector { color: var(--accent-color); font-size: 1rem; margin: -2px 0; }
 
         /* --- STACK --- */
