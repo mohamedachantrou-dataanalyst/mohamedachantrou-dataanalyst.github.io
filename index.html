@@ -12,11 +12,10 @@
             --accent-color: #00d4ff;
             --text-main: #e6edf3;
             --text-dim: #8b949e;
-            --grad: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -26,176 +25,60 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- HEADER --- */
-        header {
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        /* --- SECTION 1 : HERO --- */
+        header { height: 85vh; display: flex; align-items: center; justify-content: space-between; }
         .hero-content { flex: 1; text-align: right; padding-right: 60px; }
         .hero-image { flex: 1; }
-        .hero-image img { width: 100%; border-radius: 15px; border: 1px solid #30363d; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        h1 { font-size: 3.8rem; margin: 0; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .role { font-size: 2rem; font-weight: 300; color: #fff; margin: 10px 0; }
+        .hero-image img { width: 100%; border-radius: 15px; border: 1px solid #30363d; }
+        h1 { font-size: 3.8rem; margin: 0; color: var(--accent-color); }
+        .role { font-size: 2rem; font-weight: 300; margin: 10px 0; }
         .tagline { color: var(--text-dim); font-size: 1.1rem; max-width: 500px; margin-left: auto; }
 
-        /* --- PIPELINE DATA (À PROPOS) --- */
-        .pipeline-container { display: flex; flex-direction: column; gap: 15px; margin: 50px 0; }
-        .pipeline-step {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 15px 25px;
-            border-radius: 8px;
-            border-left: 5px solid var(--accent-color);
-            transition: 0.3s;
+        /* --- SECTION 2 : À PROPOS (2 COLONNES) --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; padding: 80px 0; }
+        .profile-box { text-align: center; background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #30363d; }
+        .profile-box img { width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--accent-color); margin-bottom: 20px; object-fit: cover; }
+        
+        .pipeline-flow { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .step { 
+            background: var(--card-bg); border: 1px solid var(--accent-color); 
+            padding: 12px 20px; border-radius: 5px; width: 100%; text-align: center;
+            font-size: 0.9rem; position: relative;
         }
-        .pipeline-step:hover { transform: translateX(10px); background: #1c212a; }
-        .step-num { font-weight: bold; color: var(--accent-color); margin-right: 20px; font-size: 1.2rem; min-width: 30px; }
-        .step-title { font-weight: 600; flex: 1; }
+        .connector { color: var(--accent-color); font-size: 1.2rem; margin: -5px 0; }
 
-        /* --- OUTILS (STACK) --- */
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .tool-card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid #30363d; }
-        .tool-card h3 { color: var(--accent-color); font-size: 1rem; margin-bottom: 15px; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        .tool-tag { display: inline-block; background: #21262d; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; margin: 3px; color: var(--text-dim); }
+        /* --- SECTION 3 : STACK TECHNIQUE --- */
+        .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .stack-box { background: var(--card-bg); padding: 25px; border-radius: 10px; border: 1px solid #30363d; }
+        .stack-box h3 { color: var(--accent-color); display: flex; align-items: center; gap: 10px; font-size: 1.1rem; margin-top: 0; }
+        .stack-box h3 i { color: var(--accent-color); }
+        .stack-list { list-style: none; padding: 0; margin: 15px 0 0 0; }
+        .stack-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; }
+        .stack-list li i { color: var(--accent-color); font-size: 0.8rem; }
 
-        /* --- PROJETS GRANDS --- */
+        /* --- SECTION 4 : PROJETS --- */
         .project-large { 
-            background: var(--card-bg); 
-            border-radius: 20px; 
-            margin-bottom: 40px; 
-            display: flex; 
-            overflow: hidden; 
-            border: 1px solid #30363d;
-            transition: 0.4s;
+            background: var(--card-bg); border-radius: 20px; margin-bottom: 40px; 
+            display: flex; overflow: hidden; border: 1px solid #30363d;
         }
-        .project-large:hover { border-color: var(--accent-color); }
-        .pj-img { width: 45%; background-size: cover; background-position: center; min-height: 300px; }
+        .pj-img { width: 45%; background-size: cover; background-position: center; min-height: 320px; }
         .pj-info { width: 55%; padding: 40px; }
-        .pj-tags { margin: 15px 0; }
-        .pj-tag { font-size: 0.75rem; background: rgba(0, 212, 255, 0.1); color: var(--accent-color); padding: 5px 12px; border-radius: 20px; margin-right: 8px; border: 1px solid var(--accent-color); }
+        .pj-tag { font-size: 0.7rem; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 4px 10px; border-radius: 15px; margin-right: 5px; display: inline-block; margin-top: 5px; }
+        .btn-action { display: inline-block; padding: 10px 20px; background: var(--accent-color); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
 
-        .btn-action { display: inline-block; padding: 12px 25px; background: var(--accent-color); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
+        .other-projects-list { margin-top: 50px; background: rgba(22, 27, 34, 0.6); padding: 30px; border-radius: 15px; }
+        .other-item { display: flex; justify-content: space-between; border-bottom: 1px solid #30363d; padding: 15px 0; }
 
-        /* --- CONTACT & FOOTER --- */
-        footer { padding: 80px 0; text-align: center; background: #0d1117; }
-        .contact-links a { color: var(--text-main); font-size: 2rem; margin: 0 20px; text-decoration: none; }
-        .contact-links a:hover { color: var(--accent-color); }
-        .license { font-size: 0.8rem; color: #484f58; margin-top: 40px; }
-
+        /* --- FOOTER --- */
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid #30363d; }
+        .contact-icons a { color: var(--accent-color); font-size: 2rem; margin: 0 20px; text-decoration: none; }
+        
         section { padding: 80px 0; }
-        h2 { font-size: 2rem; margin-bottom: 40px; }
+        h2 { color: var(--text-main); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
 <header class="container">
     <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1551288049-bbbda536ad8a?auto=format&fit=crop&q=80" alt="Data Analysis visualization">
-    </div>
-    <div class="hero-content">
-        <h1>Mohamed Achantrou</h1>
-        <div class="role">Data Analyst</div>
-        <p class="tagline">Tourner vos données en une machine de prise de décision stratégique.</p>
-    </div>
-</header>
-
-<div class="container">
-    
-    <section id="about">
-        <h2>Mon Cycle d'Analyse (A à Z)</h2>
-        <div class="pipeline-container">
-            <div class="pipeline-step"><span class="step-num">01</span><span class="step-title">Business Understanding (Définition des KPIs & Objectifs)</span></div>
-            <div class="pipeline-step"><span class="step-num">02</span><span class="step-title">Data Collection & Extraction (SQL, API, Scraping)</span></div>
-            <div class="pipeline-step"><span class="step-num">03</span><span class="step-title">Data Transformation & Preparation (Cleaning, ETL, Power Query)</span></div>
-            <div class="pipeline-step"><span class="step-num">04</span><span class="step-title">Exploratory Data Analysis - EDA (Détection de tendances & anomalies)</span></div>
-            <div class="pipeline-step"><span class="step-num">05</span><span class="step-title">Data Analysis & Statistical Analysis (Tests d'hypothèses, Corrélation)</span></div>
-            <div class="pipeline-step"><span class="step-num">06</span><span class="step-title">Data Visualisation & Reporting (Dashboards interactifs)</span></div>
-            <div class="pipeline-step"><span class="step-num">07</span><span class="step-title">Data Communication & Decision Support (Recommandations stratégiques)</span></div>
-        </div>
-    </section>
-
-    <section id="tools">
-        <h2>Stack Technique</h2>
-        <div class="tools-grid">
-            <div class="tool-card">
-                <h3>Extraction & Querying</h3>
-                <span class="tool-tag">SQL</span> <span class="tool-tag">BigQuery</span> 
-                <span class="tool-tag">MySQL</span> <span class="tool-tag">PostgreSQL</span>
-            </div>
-            <div class="tool-card">
-                <h3>Preparation & Manipulation</h3>
-                <span class="tool-tag">Python (Pandas/Numpy)</span> <span class="tool-tag">Excel Avancé</span> 
-                <span class="tool-tag">Power Query</span> <span class="tool-tag">Talend</span>
-            </div>
-            <div class="tool-card">
-                <h3>Statistical Analysis</h3>
-                <span class="tool-tag">Python (SciPy)</span> <span class="tool-tag">Statsmodels</span> 
-                <span class="tool-tag">Inferential Stats</span> <span class="tool-tag">A/B Testing</span>
-            </div>
-            <div class="tool-card">
-                <h3>Visualization & BI</h3>
-                <span class="tool-tag">Power BI (DAX)</span> <span class="tool-tag">Tableau</span> 
-                <span class="tool-tag">Matplotlib</span> <span class="tool-tag">Seaborn</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <h2>Projets Majeurs</h2>
-
-        <div class="project-large">
-            <div class="pj-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500');"></div>
-            <div class="pj-info">
-                <h3>Optimisation Stratégie Achat 2025</h3>
-                <p>Analyse de la fiabilité fournisseurs et réduction des coûts opérationnels via un modèle de scoring personnalisé.</p>
-                <div class="pj-tags">
-                    <span class="pj-tag">#PowerBI</span> <span class="pj-tag">#SQL</span> <span class="pj-tag">#DAX</span> <span class="pj-tag">#SupplyChain</span> <span class="pj-tag">#ETL</span>
-                </div>
-                <a href="#" class="btn-action">En savoir plus sur GitHub →</a>
-            </div>
-        </div>
-
-        <div class="project-large">
-            <div class="pj-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536ad8a?q=80&w=500');"></div>
-            <div class="pj-info">
-                <h3>Automatisation Pipeline E-commerce</h3>
-                <p>Développement d'un script Python pour le nettoyage automatisé de 500k+ lignes de transactions et export vers BigQuery.</p>
-                <div class="pj-tags">
-                    <span class="pj-tag">#Python</span> <span class="pj-tag">#Pandas</span> <span class="pj-tag">#Automation</span> <span class="pj-tag">#BigQuery</span> <span class="pj-tag">#Cleaning</span>
-                </div>
-                <a href="#" class="btn-action">En savoir plus sur GitHub →</a>
-            </div>
-        </div>
-
-        <div class="project-large">
-            <div class="pj-img" style="background-image: url('https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=500');"></div>
-            <div class="pj-info">
-                <h3>Analyse Statistique de Performance</h3>
-                <p>Utilisation de tests d'hypothèses pour valider l'impact d'une nouvelle politique de prix sur le comportement d'achat.</p>
-                <div class="pj-tags">
-                    <span class="pj-tag">#Statistics</span> <span class="pj-tag">#SciPy</span> <span class="pj-tag">#Analysis</span> <span class="pj-tag">#Python</span> <span class="pj-tag">#DecisionSupport</span>
-                </div>
-                <a href="#" class="btn-action">En savoir plus sur GitHub →</a>
-            </div>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    <h2>Contactez-moi</h2>
-    <div class="contact-links">
-        <a href="mailto:votre-email@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#"><i class="fa-brands fa-github"></i></a>
-    </div>
-    <div class="license">
-        © 2026 Mohamed Achantrou | Sous licence MIT
-    </div>
-</footer>
-
-</body>
-</html>
+        <img src="
