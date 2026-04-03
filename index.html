@@ -113,15 +113,12 @@
 
         /* --- À PROPOS (CORRIGÉ & CENTRÉ) --- */
         .about-grid { 
-            display: grid; 
-            /* On force la répartition : 1 part pour le texte, 1.2 part pour le graphe */
-            grid-template-columns: 1fr 1.2fr; 
-            gap: 40px; 
-            align-items: center; 
-            padding: 80px 0;
-            /* Empêche le basculement automatique sauf sur très petits écrans */
-            min-width: 0; 
-        }
+                    display: grid; 
+                    grid-template-columns: 1fr 1.3fr; 
+                    gap: 50px; 
+                    align-items: center; /* Centre verticalement le bloc gauche et le graphe */
+                    padding: 100px 0;
+                }
         .profile-box { text-align: center; background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid #30363d; }
         .profile-box img { width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--accent-color); margin-bottom: 20px; object-fit: cover; }
         
@@ -210,7 +207,7 @@
     <section id="about" class="about-grid">
         <div class="profile-box">
             <img src="photo_linkedin.png" alt="Mohamed Achantrou">
-            <p>Ingénieur diplômé de Centrale Lille, spécialisé en analyse de données. J’exploite des données opérationnelles et stratégiques pour produire des analyses structurées, identifier des tendances pertinentes et générer des insights utiles à la prise de décision.</p>
+            <p>Ingénieur diplômé de Centrale Lille, spécialisé en analyse de données. J’exploite des données pour produire des analyses structurées et générer des insights utiles à la prise de décision.</p>
     
             <p>Capable de transformer des données complexes en informations claires et exploitables à travers des analyses rigoureuses et des visualisations adaptées.</p>
     
