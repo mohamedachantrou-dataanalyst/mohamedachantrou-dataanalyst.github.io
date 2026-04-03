@@ -21,63 +21,108 @@
             margin: 0;
             line-height: 1.6;
             scroll-behavior: smooth;
+            padding-top: 70px; /* Espace pour la barre de nav */
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- SECTION 1 : HERO --- */
-        header { height: 85vh; display: flex; align-items: center; justify-content: space-between; }
+        /* --- BARRE DE NAVIGATION (FIXE) --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #30363d;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { color: var(--accent-color); font-weight: bold; font-size: 1.2rem; text-decoration: none; }
+        nav .links a { color: var(--text-main); text-decoration: none; margin-left: 25px; font-size: 0.9rem; transition: 0.3s; }
+        nav .links a:hover { color: var(--accent-color); }
+
+        /* --- HERO --- */
+        header { height: 80vh; display: flex; align-items: center; justify-content: space-between; }
         .hero-content { flex: 1; text-align: right; padding-right: 60px; }
         .hero-image { flex: 1; }
         .hero-image img { width: 100%; border-radius: 15px; border: 1px solid #30363d; }
-        h1 { font-size: 3.8rem; margin: 0; color: var(--accent-color); }
-        .role { font-size: 2rem; font-weight: 300; margin: 10px 0; }
+        h1 { font-size: 3.5rem; margin: 0; color: var(--accent-color); }
+        .role { font-size: 1.8rem; font-weight: 300; margin: 10px 0; }
         .tagline { color: var(--text-dim); font-size: 1.1rem; max-width: 500px; margin-left: auto; }
 
-        /* --- SECTION 2 : À PROPOS (2 COLONNES) --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; padding: 80px 0; }
-        .profile-box { text-align: center; background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #30363d; }
-        .profile-box img { width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--accent-color); margin-bottom: 20px; object-fit: cover; }
-        
-        .pipeline-flow { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .step { 
-            background: var(--card-bg); border: 1px solid var(--accent-color); 
-            padding: 12px 20px; border-radius: 5px; width: 100%; text-align: center;
-            font-size: 0.9rem; position: relative;
+        /* --- À PROPOS (CORRIGÉ & CENTRÉ) --- */
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1.3fr; 
+            gap: 50px; 
+            align-items: center; /* Centre verticalement le bloc gauche et le graphe */
+            padding: 100px 0; 
         }
-        .connector { color: var(--accent-color); font-size: 1.2rem; margin: -5px 0; }
+        .profile-box { text-align: center; background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid #30363d; }
+        .profile-box img { width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--accent-color); margin-bottom: 20px; object-fit: cover; }
+        
+        .pipeline-flow { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .step-container { display: flex; width: 100%; align-items: stretch; border: 1px solid #30363d; border-radius: 5px; overflow: hidden; }
+        .step-num { 
+            background: var(--accent-color); 
+            color: #000; 
+            font-weight: bold; 
+            padding: 12px; 
+            width: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .step-text { background: var(--card-bg); padding: 12px 20px; flex: 1; font-size: 0.9rem; display: flex; align-items: center; }
+        .connector { color: var(--accent-color); font-size: 1rem; margin: -2px 0; }
 
-        /* --- SECTION 3 : STACK TECHNIQUE --- */
+        /* --- STACK --- */
         .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
         .stack-box { background: var(--card-bg); padding: 25px; border-radius: 10px; border: 1px solid #30363d; }
         .stack-box h3 { color: var(--accent-color); display: flex; align-items: center; gap: 10px; font-size: 1.1rem; margin-top: 0; }
-        .stack-box h3 i { color: var(--accent-color); }
         .stack-list { list-style: none; padding: 0; margin: 15px 0 0 0; }
         .stack-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.95rem; }
         .stack-list li i { color: var(--accent-color); font-size: 0.8rem; }
 
-        /* --- SECTION 4 : PROJETS --- */
-        .project-large { 
-            background: var(--card-bg); border-radius: 20px; margin-bottom: 40px; 
-            display: flex; overflow: hidden; border: 1px solid #30363d;
-        }
+        /* --- PROJETS --- */
+        .project-large { background: var(--card-bg); border-radius: 20px; margin-bottom: 40px; display: flex; overflow: hidden; border: 1px solid #30363d; }
         .pj-img { width: 45%; background-size: cover; background-position: center; min-height: 320px; }
         .pj-info { width: 55%; padding: 40px; }
         .pj-tag { font-size: 0.7rem; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 4px 10px; border-radius: 15px; margin-right: 5px; display: inline-block; margin-top: 5px; }
-        .btn-action { display: inline-block; padding: 10px 20px; background: var(--accent-color); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; }
-
+        .btn-action { display: inline-block; padding: 10px 20px; background: var(--accent-color); color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; transition: 0.3s; }
+        .btn-action:hover { opacity: 0.8; }
         .other-projects-list { margin-top: 50px; background: rgba(22, 27, 34, 0.6); padding: 30px; border-radius: 15px; }
-        .other-item { display: flex; justify-content: space-between; border-bottom: 1px solid #30363d; padding: 15px 0; }
+        .other-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #30363d; padding: 15px 0; }
 
-        /* --- FOOTER --- */
-        footer { padding: 60px 0; text-align: center; border-top: 1px solid #30363d; }
-        .contact-icons a { color: var(--accent-color); font-size: 2rem; margin: 0 20px; text-decoration: none; }
+        footer { padding: 60px 0; text-align: center; border-top: 1px solid #30363d; margin-top: 50px; }
+        .contact-icons a { color: var(--accent-color); font-size: 1.8rem; margin: 0 20px; text-decoration: none; }
         
         section { padding: 80px 0; }
-        h2 { color: var(--text-main); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: var(--text-main); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column-reverse; text-align: center; height: auto; padding-top: 50px; }
+            .hero-content { text-align: center; padding: 0; margin-top: 30px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .project-large { flex-direction: column; }
+            .pj-img, .pj-info { width: 100%; }
+        }
     </style>
 </head>
 <body>
+
+<nav>
+    <div class="container">
+        <a href="#" class="logo">MA.DATA</a>
+        <div class="links">
+            <a href="#about">À Propos</a>
+            <a href="#stack">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
 
 <header class="container">
     <div class="hero-image">
@@ -97,20 +142,21 @@
             <img src="https://via.placeholder.com/150" alt="Mohamed Achantrou">
             <p>Ingénieur diplômé de Centrale Lille, spécialisé en Sciences des Données. Mon approche combine rigueur technique et expertise métier pour maximiser l'impact business.</p>
         </div>
+        
         <div class="pipeline-flow">
-            <div class="step">1. Business Understanding</div>
+            <div class="step-container"><div class="step-num">1</div><div class="step-text">Business Understanding</div></div>
             <div class="connector"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="step">2. Data Collection / Data Extraction</div>
+            <div class="step-container"><div class="step-num">2</div><div class="step-text">Data Collection / Data Extraction</div></div>
             <div class="connector"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="step">3. Data Transformation / Data Preparation</div>
+            <div class="step-container"><div class="step-num">3</div><div class="step-text">Data Transformation / Data Preparation</div></div>
             <div class="connector"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="step">4. Exploratory Data Analysis (EDA)</div>
+            <div class="step-container"><div class="step-num">4</div><div class="step-text">Exploratory Data Analysis (EDA)</div></div>
             <div class="connector"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="step">5. Data Analysis / Statistical Analysis</div>
+            <div class="step-container"><div class="step-num">5</div><div class="step-text">Data Analysis / Statistical Analysis</div></div>
             <div class="connector"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="step">6. Data Visualisation & Reporting</div>
+            <div class="step-container"><div class="step-num">6</div><div class="step-text">Data Visualisation & Reporting</div></div>
             <div class="connector"><i class="fa-solid fa-arrow-down"></i></div>
-            <div class="step">7. Data Communication & Decision Support</div>
+            <div class="step-container"><div class="step-num">7</div><div class="step-text">Data Communication & Decision Support</div></div>
         </div>
     </section>
 
@@ -153,62 +199,4 @@
     </section>
 
     <section id="projects">
-        <h2>Projets Majeurs</h2>
-        
-        <div class="project-large">
-            <div class="pj-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500');"></div>
-            <div class="pj-info">
-                <h3>Optimisation Stratégie Achat 2025</h3>
-                <p>Modélisation de la fiabilité fournisseurs et analyse de la performance achats.</p>
-                <div>
-                    <span class="pj-tag">#PowerBI</span> <span class="pj-tag">#SQL</span> <span class="pj-tag">#DAX</span> <span class="pj-tag">#Purchasing</span> <span class="pj-tag">#ETL</span>
-                </div>
-                <a href="#" class="btn-action">En savoir plus →</a>
-            </div>
-        </div>
-
-        <div class="project-large">
-            <div class="pj-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda536ad8a?q=80&w=500');"></div>
-            <div class="pj-info">
-                <h3>Pipeline Automatisation E-commerce</h3>
-                <p>Nettoyage et structuration de données transactionnelles massives.</p>
-                <div>
-                    <span class="pj-tag">#Python</span> <span class="pj-tag">#Pandas</span> <span class="pj-tag">#BigQuery</span> <span class="pj-tag">#Automation</span> <span class="pj-tag">#Cleaning</span>
-                </div>
-                <a href="#" class="btn-action">En savoir plus →</a>
-            </div>
-        </div>
-
-        <div class="project-large">
-            <div class="pj-img" style="background-image: url('https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=500');"></div>
-            <div class="pj-info">
-                <h3>Analyse Statistique de Performance</h3>
-                <p>Tests d'hypothèses sur le comportement client et l'élasticité prix.</p>
-                <div>
-                    <span class="pj-tag">#Statistics</span> <span class="pj-tag">#SciPy</span> <span class="pj-tag">#Python</span> <span class="pj-tag">#A/B Testing</span> <span class="pj-tag">#Reporting</span>
-                </div>
-                <a href="#" class="btn-action">En savoir plus →</a>
-            </div>
-        </div>
-
-        <div class="other-projects-list">
-            <h3>Autres Projets</h3>
-            <div class="other-item"><span>Scraping Immobilier & Analyse de Marché</span><a href="#" class="btn-action" style="margin:0; padding: 5px 15px;">Repo</a></div>
-            <div class="other-item"><span>Dashboard de Pilotage KPIs Marketing</span><a href="#" class="btn-action" style="margin:0; padding: 5px 15px;">Repo</a></div>
-        </div>
-    </section>
-
-</div>
-
-<footer>
-    <h2>Contactez-moi</h2>
-    <div class="contact-icons">
-        <a href="mailto:votre@email.com"><i class="fa-solid fa-envelope"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#"><i class="fa-brands fa-github"></i></a>
-    </div>
-    <p class="license">© 2026 Mohamed Achantrou | Sous licence MIT</p>
-</footer>
-
-</body>
-</html>
+        <h2>Projets
