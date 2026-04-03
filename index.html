@@ -114,10 +114,13 @@
         /* --- À PROPOS (CORRIGÉ & CENTRÉ) --- */
         .about-grid { 
             display: grid; 
-            grid-template-columns: 1fr 1.3fr; 
-            gap: 50px; 
-            align-items: center; /* Centre verticalement le bloc gauche et le graphe */
-            padding: 100px 0; 
+            /* On force la répartition : 1 part pour le texte, 1.2 part pour le graphe */
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 40px; 
+            align-items: center; 
+            padding: 80px 0;
+            /* Empêche le basculement automatique sauf sur très petits écrans */
+            min-width: 0; 
         }
         .profile-box { text-align: center; background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid #30363d; }
         .profile-box img { width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--accent-color); margin-bottom: 20px; object-fit: cover; }
