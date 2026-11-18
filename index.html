@@ -161,6 +161,47 @@
         section { padding: 80px 0; }
         h2 { color: var(--text-main); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 2px; border-left: 4px solid var(--accent-color); padding-left: 15px; }
 
+        /* --- CERTIFICATIONS --- */
+        .cert-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 35px; }
+        .cert-filters button {
+            background: transparent; color: var(--text-main); border: 1px solid #30363d;
+            padding: 8px 18px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; transition: 0.3s;
+        }
+        .cert-filters button:hover { border-color: var(--accent-color); }
+        .cert-filters button.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); font-weight: bold; }
+        
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .cert-card {
+            perspective: 1000px; height: 260px; cursor: pointer;
+            opacity: 0; transform: translateY(30px) scale(.95);
+            transition: opacity .5s ease, transform .5s ease;
+        }
+        .cert-card.visible { opacity: 1; transform: none; }
+        .cert-card.hide { opacity: 0; transform: scale(.8); pointer-events: none; }
+        .cert-card.gone { display: none; }
+        
+        .cert-inner { position: relative; width: 100%; height: 100%; transition: transform .7s; transform-style: preserve-3d; }
+        .cert-card.flipped .cert-inner { transform: rotateY(180deg); }
+        @media (hover: hover) { .cert-card:hover .cert-inner { transform: rotateY(180deg); } }
+        
+        .cert-face {
+            position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+            border-radius: 15px; border: 1px solid #30363d; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; box-sizing: border-box;
+        }
+        .cert-front { background-size: cover; background-position: center; }
+        .cert-front::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,15,25,.95) 15%, rgba(11,15,25,.2)); }
+        .cert-front h4, .cert-front small { position: relative; margin: 0; }
+        .cert-front h4 { font-size: 1.1rem; }
+        .cert-front small { color: var(--accent-color); }
+        .cert-back { background: var(--card-bg); transform: rotateY(180deg); justify-content: center; border-color: var(--accent-color); box-shadow: 0 0 20px rgba(0,212,255,.2); }
+        .cert-back p { margin: 4px 0; font-size: .9rem; color: var(--text-dim); }
+        .cert-back strong { color: var(--text-main); }
+        .cert-back a { color: var(--accent-color); font-size: .85rem; margin-top: 10px; text-decoration: none; }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .cert-card, .cert-inner { transition: none; }
+        }
         @media (max-width: 768px) {
             header { flex-direction: column-reverse; text-align: center; height: auto; padding-top: 50px; }
             .hero-content { text-align: center; padding: 0; margin-top: 30px; }
@@ -270,6 +311,18 @@
         </div>
     </section>
 
+    <section id="certs">
+        <h2>Certifications</h2>
+        <div class="cert-filters">
+            <button class="active" data-f="all">Tous</button>
+            <button data-f="bi">Analyse & BI</button>
+            <button data-f="eng">Ingénierie data</button>
+            <button data-f="cloud">IA & Cloud</button>
+            <button data-f="pm">Gestion de projet</button>
+        </div>
+        <div class="cert-grid" id="certGrid"></div>
+    </section>
+    
     <section id="projects">
         <h2>Projets Phares</h2>
         
@@ -334,6 +387,51 @@
 
     <p class="license">© 2026 Mohamed Achantrou | Sous licence MIT</p>
 </footer>
+
+<script>
+const certs = [
+  {n:'Power BI', i:'365 Data Science', y:2026, c:'bi', s:'DAX, dashboards, modélisation', l:'#'},
+  {n:'SQL', i:'365 Data Science', y:2026, c:'bi', s:'Requêtes, jointures, agrégations', l:'#'},
+  {n:'Python', i:'365 Data Science', y:2026, c:'bi', s:'Pandas, NumPy, analyse', l:'#'},
+  {n:'dbt Fundamentals', i:'dbt Labs', y:2026, c:'eng', s:'Modèles, tests, documentation', l:'#'},
+  {n:'Databricks Fundamentals', i:'Databricks Academy', y:2026, c:'eng', s:'Lakehouse, notebooks', l:'#'},
+  {n:'Git & GitHub', i:'365 Data Science', y:2026, c:'eng', s:'Versioning, collaboration', l:'#'},
+  {n:'AI for Analytics', i:'365 Data Science', y:2026, c:'cloud', s:'IA appliquée à l’analyse', l:'#'},
+  {n:'Cloud Computing', i:'365 Data Science', y:2026, c:'cloud', s:'Concepts cloud', l:'#'},
+  {n:'Project Management', i:'MOOC GdP 16', y:2020, c:'pm', s:'Planification, pilotage', l:'#'}
+];
+const grid = document.getElementById('certGrid');
+grid.innerHTML = certs.map((c,k) => `
+  <div class="cert-card" data-c="${c.c}" style="transition-delay:${k*60}ms">
+    <div class="cert-inner">
+      <div class="cert-face cert-front" style="background-image:url('https://picsum.photos/seed/cert${k}/500/400')">
+        <h4>${c.n}</h4><small>${c.i} · ${c.y}</small>
+      </div>
+      <div class="cert-face cert-back">
+        <p><strong>${c.n}</strong></p>
+        <p>${c.i} — ${c.y}</p>
+        <p>${c.s}</p>
+        <a href="${c.l}" target="_blank">Vérifier le certificat →</a>
+      </div>
+    </div>
+  </div>`).join('');
+
+const cards = [...document.querySelectorAll('.cert-card')];
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+}), {threshold: .15});
+cards.forEach(c => { io.observe(c); c.addEventListener('click', () => c.classList.toggle('flipped')); });
+
+document.querySelectorAll('.cert-filters button').forEach(b => b.addEventListener('click', () => {
+  document.querySelector('.cert-filters .active').classList.remove('active');
+  b.classList.add('active');
+  cards.forEach(c => {
+    const show = b.dataset.f === 'all' || c.dataset.c === b.dataset.f;
+    if (show) { c.classList.remove('gone'); requestAnimationFrame(() => c.classList.remove('hide')); }
+    else { c.classList.add('hide'); setTimeout(() => c.classList.contains('hide') && c.classList.add('gone'), 400); }
+  });
+}));
+</script>
 
 </body>
 </html>
